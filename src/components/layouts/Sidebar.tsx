@@ -138,20 +138,20 @@ export default function SideBar({
     children
 }: Props) {
 
-    const { useQueryWrapper } = RequestProcessor();
+    // const { useQueryWrapper } = RequestProcessor();
 
-    const { data: categoryList, isLoading }: any = useQueryWrapper<Categories[]>(
-        'category',
-        async () => await getCategory({})
-    );
-    if (isLoading) {
-        // Hiển thị Skeleton trong khi dữ liệu đang được tải
-        return (
-            <div>
-                <Skeleton count={10} height={100} />
-            </div>
-        );
-    }
+    // const { data: categoryList, isLoading }: any = useQueryWrapper<Categories[]>(
+    //     'category',
+    //     async () => await getCategory({})
+    // );
+    // if (isLoading) {
+    //     // Hiển thị Skeleton trong khi dữ liệu đang được tải
+    //     return (
+    //         <div>
+    //             <Skeleton count={10} height={100} />
+    //         </div>
+    //     );
+    // }
 
     const drawer = (
         <div>

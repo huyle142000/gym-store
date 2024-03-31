@@ -11,6 +11,10 @@ import SideBar from "@/components/layouts/Sidebar";
 import { api } from "@/services/service";
 import Skeleton from "react-loading-skeleton";
 import { RequestProcessor } from "@/services/requestProcessor";
+import { Categories } from "@/types/categories";
+import { getCategory } from "@/store/app/category";
+import { getLabel } from "@/store/app/label";
+import { Label } from "@/types/label";
 
 
 const fetchProducts = async () => {
@@ -27,8 +31,18 @@ type Props = {
 
 export default function Home() {
   const { useQueryWrapper } = RequestProcessor();
-
+  const { data: labelList }: any = useQueryWrapper<Label[]>(
+    'label',
+    async () => await getLabel({})
+  );
   const { data: products, isLoading, error }: any = useQueryWrapper('products', fetchProducts);
+
+  const { data: categoryList }: any = useQueryWrapper<Categories[]>(
+    'category',
+    async () => await getCategory({})
+  );
+ 
+
   if (isLoading) {
     // Hiển thị Skeleton trong khi dữ liệu đang được tải
     return (
@@ -46,9 +60,9 @@ export default function Home() {
     <Box>
       <Container component="main" maxWidth="xl">
         <CssBaseline />
-        <SideBar>
-          {products && <FlashSaleSlide products={products?.filter((product: Product) => product.isSale)} />}
-        </SideBar>
+        {/* <SideBar> */}
+        {products && <FlashSaleSlide products={products?.filter((product: Product) => product.isSale)} />}
+        {/* </SideBar> */}
       </Container>
     </Box>
   )

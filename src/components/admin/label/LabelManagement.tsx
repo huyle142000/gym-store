@@ -45,7 +45,7 @@ const LabelManagement = () => {
 
     const { useQueryWrapper } = RequestProcessor();
     const { data: labelList }: any = useQueryWrapper<Label[]>(
-        'category',
+        'label',
         async () => await getLabel({})
     );
 
