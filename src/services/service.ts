@@ -2,7 +2,6 @@ import axios, { AxiosHeaders, AxiosRequestConfig } from "axios";
 import { ACCESS_TOKEN, DOMAIN, setting } from "../utils/setting";
 
 let isRefreshing = false;
-let refreshPromise: Promise<any> | null = null;
 
 let arrFailedApi: AxiosRequestConfig<any>[] = [];
 
